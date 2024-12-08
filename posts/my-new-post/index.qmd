@@ -3,7 +3,7 @@ title: "About Me"
 author: "Yifeng Luo"
 date: "2024-11-30"
 categories: [news]
-image: "IMG_1364.jpg"
+image: "IMG_1364.JPG"
 ---
 
 ![](IMG_1364.JPG)This is one of my favorite photos, an artwork in Art Institute of Chicago.

@@ -3,7 +3,7 @@ title: "Do eduation effect their salary in IT area?"
 author: "Yifeng Luo"
 date: "2024-12-07"
 categories: [news, code, analysis]
-image: "dataset-cover.jpg"
+image: "IT.jpg"
 ---
 
 This is a post with executable code.
@@ -90,3 +90,39 @@ ggplot(data, aes(x = reorder(Education, Education, FUN = length), fill = Educati
 anova_result <- aov(Salary ~ Education, data = data)
 print(summary(anova_result))
 ```
+
+Based on the visualizations and statistical analysis, here's a comprehensive analysis of how education affects IT salaries in India:
+
+Key Findings:
+
+1.  Top Earning Degrees:
+
+-   MTech leads with the highest average salary (₹2,086,150)
+-   B.Pharmacy follows at ₹1,979,655
+-   BJMC ranks third at ₹1,846,517
+-   LLB comes fourth at ₹1,815,877
+
+2.  Distribution Patterns:
+
+-   Most degrees show wide salary ranges, indicating that factors beyond education influence compensation
+-   Technical degrees (MTech, B.PHARMACY) show more concentrated salary distributions
+-   General degrees (B.A, B.Com) show wider spread, suggesting more variable career paths
+
+3.  Employment Numbers:
+
+-   B.Tech/B.E. has the highest number of employees
+-   B.Sc, B.Com, and BCA follow as the next most common degrees
+-   Specialized degrees (MTech, B.PHARMACY, BJMC) have fewer representatives
+
+4.  Statistical Significance:
+
+-   ANOVA results (p-value = 0.226) suggest that the differences in salaries between education levels are not statistically significant at the 0.05 level
+-   This indicates that other factors (like experience, location, or specific skills) might play a more important role in determining salary
+
+5.  Salary Ranges:
+
+-   Most degrees show minimum salaries around ₹500,000-1,000,000
+-   Maximum salaries vary more significantly by degree
+-   Professional degrees (MTech, B.PHARMACY) show higher minimum salaries
+
+Conclusions: 1. While higher technical degrees tend to command higher salaries, the relationship isn't statistically significant 2. There's considerable overlap in salary ranges across different education levels 3. Technical and professional degrees show more salary stability 4. Education alone isn't the sole determinant of IT salaries in India

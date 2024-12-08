@@ -1,13 +1,139 @@
 ---
-title: "Post With Code"
-author: "Harlow Malloc"
+title: "Do student attendence effect their stress level?"
+author: "Yifeng Luo"
 date: "2024-12-07"
 categories: [news, code, analysis]
-image: "image.jpg"
+image: "tired.jpg"
 ---
 
 This is a post with executable code.
 
 ```{r}
-1 + 1
+# Load required libraries
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(viridis)
+
+# Read the data
+data <- read.csv("student_monnitoring_data.csv")
+
+# 1. Calculate average stress levels by attendance status
+avg_stress <- data %>%
+  group_by(Attendance.Status) %>%
+  summarise(
+    mean_stress = mean(Stress.Level..GSR.),
+    sd_stress = sd(Stress.Level..GSR.),
+    count = n()
+  )
+
+# 2. Box plot of stress levels by attendance status
+ggplot(data, aes(x = Attendance.Status, y = Stress.Level..GSR., fill = Attendance.Status)) +
+  geom_boxplot(alpha = 0.7) +
+  theme_minimal() +
+  labs(
+    title = "Distribution of Stress Levels by Attendance Status",
+    x = "Attendance Status",
+    y = "Stress Level (GSR)"
+  ) +
+  theme(legend.position = "none")
+
+# 3. Violin plot with points
+ggplot(data, aes(x = Attendance.Status, y = Stress.Level..GSR., fill = Attendance.Status)) +
+  geom_violin(alpha = 0.5) +
+  geom_jitter(width = 0.2, alpha = 0.2) +
+  theme_minimal() +
+  labs(
+    title = "Stress Level Distribution by Attendance Status",
+    x = "Attendance Status",
+    y = "Stress Level (GSR)"
+  ) +
+  theme(legend.position = "none")
+
+# 4. Bar plot of average stress levels
+ggplot(avg_stress, aes(x = Attendance.Status, y = mean_stress, fill = Attendance.Status)) +
+  geom_bar(stat = "identity") +
+  geom_errorbar(aes(ymin = mean_stress - sd_stress, 
+                    ymax = mean_stress + sd_stress),
+                width = 0.2) +
+  theme_minimal() +
+  labs(
+    title = "Average Stress Levels by Attendance Status",
+    x = "Attendance Status",
+    y = "Average Stress Level (GSR)"
+  ) +
+  theme(legend.position = "none")
+
+# 5. Create a summary table
+summary_stats <- data %>%
+  group_by(Attendance.Status) %>%
+  summarise(
+    Count = n(),
+    Mean_Stress = mean(Stress.Level..GSR.),
+    Median_Stress = median(Stress.Level..GSR.),
+    SD_Stress = sd(Stress.Level..GSR.),
+    Min_Stress = min(Stress.Level..GSR.),
+    Max_Stress = max(Stress.Level..GSR.)
+  )
+
+print("Summary Statistics:")
+print(summary_stats)
+
+# 6. Perform ANOVA test
+anova_result <- aov(Stress.Level..GSR. ~ Attendance.Status, data = data)
+print("\nANOVA Results:")
+print(summary(anova_result))
+
+# 7. Additional analysis: Relationship with sleep hours
+ggplot(data, aes(x = Sleep.Hours, y = Stress.Level..GSR., color = Attendance.Status)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm") +
+  facet_wrap(~Attendance.Status) +
+  theme_minimal() +
+  labs(
+    title = "Relationship between Sleep Hours and Stress by Attendance Status",
+    x = "Sleep Hours",
+    y = "Stress Level (GSR)"
+  )
+
+# Calculate correlation between sleep and stress for each attendance status
+correlations <- data %>%
+  group_by(Attendance.Status) %>%
+  summarise(
+    correlation = cor(Sleep.Hours, Stress.Level..GSR.)
+  )
+
+print("\nCorrelations between Sleep Hours and Stress Level by Attendance Status:")
+print(correlations)
 ```
+
+Based on the visualizations and statistical results, here's a comprehensive analysis of how attendance affects student stress levels:
+
+1.  Overall Stress Distribution (Box Plot & Violin Plot):
+
+-   The median stress levels are very similar across all attendance statuses (around 2.7-2.8)
+-   The spread of stress levels is consistent across all groups (standard deviation ≈ 1.3)
+-   The distribution shapes are nearly identical, suggesting attendance status doesn't strongly influence stress levels
+
+2.  Average Stress Levels:
+
+-   Absent students: 2.74 (SD = 1.31)
+-   Late students: 2.78 (SD = 1.30)
+-   Present students: 2.77 (SD = 1.30)
+-   The differences are minimal (less than 0.04 points between highest and lowest)
+
+3.  Statistical Significance:
+
+-   The ANOVA test results (F-value = 0.797, p-value = 0.45) indicate that:
+    -   There are no statistically significant differences in stress levels between attendance groups
+    -   The p-value \> 0.05 suggests we cannot reject the null hypothesis
+
+4.  Sleep Hours and Stress Relationship:
+
+-   The correlations between sleep hours and stress are very weak for all groups:
+    -   Absent: -0.003 (slight negative correlation)
+    -   Late: 0.005 (slight positive correlation)
+    -   Present: 0.009 (slight positive correlation)
+-   These correlations are practically negligible
+
+Overall Conclusion: Based on this analysis, attendance status does not appear to have a meaningful effect on student stress levels. The stress distributions are remarkably similar across all attendance categories, and the statistical tests confirm that any observed differences are not significant. This suggests that other factors may be more important in determining student stress levels than attendance patterns.

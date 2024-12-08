@@ -1,14 +1,12 @@
 ---
 title: "About Me"
 author: "Yifeng Luo"
-date: "2024-12-07"
+date: "2024-11-30"
 categories: [news]
-image: "imagel.jpg"
+image: "IMG_1364.jpg"
 ---
 
-![](imagel.jpg)
-
-This is one of my family photos, my niece and my sister.
+![](IMG_1364.JPG)This is one of my favorite photos, an artwork in Art Institute of Chicago.
 
 Let me tell you about myself, including my hobbies, name, interests, and achievements.
 

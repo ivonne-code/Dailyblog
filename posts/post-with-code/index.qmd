@@ -1,13 +1,92 @@
 ---
-title: "Post With Code"
+title: "Do eduation effect their salary in IT area?"
 author: "Yifeng Luo"
 date: "2024-12-07"
 categories: [news, code, analysis]
-image: "image.jpg"
+image: "dataset-cover.jpg"
 ---
 
 This is a post with executable code.
 
 ```{r}
-1 + 1
+# Load required libraries
+library(ggplot2)
+library(dplyr)
+
+# Assuming your data is in a CSV file named 'position_salary'
+# Read the data
+library(readr)
+
+data <- read_csv("position_salary.csv")
+ggplot(data %>% 
+       group_by(Education) %>% 
+       summarise(avg_salary = mean(Salary)), 
+       aes(x = reorder(Education, avg_salary), y = avg_salary, fill = Education)) +
+  geom_bar(stat = "identity") +
+  coord_flip() +
+  theme_minimal() +
+  labs(title = "Average Salary by Education Level",
+       x = "Education",
+       y = "Average Salary") +
+  theme(legend.position = "none")
+
+# 2. Violin plot with box plot overlay
+ggplot(data, aes(x = reorder(Education, Salary), y = Salary, fill = Education)) +
+  geom_violin(alpha = 0.5) +
+  geom_boxplot(width = 0.2, alpha = 0.8) +
+  coord_flip() +
+  theme_minimal() +
+  labs(title = "Salary Distribution by Education Level",
+       x = "Education",
+       y = "Salary") +
+  theme(legend.position = "none")
+
+# 3. Density plot by education
+ggplot(data, aes(x = Salary, fill = Education)) +
+  geom_density(alpha = 0.5) +
+  theme_minimal() +
+  labs(title = "Salary Density Distribution by Education",
+       x = "Salary",
+       y = "Density")
+
+# 4. Create a summary table
+summary_stats <- data %>%
+  group_by(Education) %>%
+  summarise(
+    Count = n(),
+    Mean_Salary = mean(Salary),
+    Median_Salary = median(Salary),
+    Min_Salary = min(Salary),
+    Max_Salary = max(Salary),
+    SD_Salary = sd(Salary)
+  ) %>%
+  arrange(desc(Mean_Salary))
+
+print(summary_stats)
+
+# 5. Box plot with individual points
+ggplot(data, aes(x = reorder(Education, Salary), y = Salary, fill = Education)) +
+  geom_boxplot(alpha = 0.7) +
+  geom_jitter(width = 0.2, alpha = 0.3) +
+  coord_flip() +
+  theme_minimal() +
+  labs(title = "Salary Distribution with Individual Data Points",
+       x = "Education",
+       y = "Salary") +
+  theme(legend.position = "none")
+
+# 6. Bar chart showing count of employees by education
+ggplot(data, aes(x = reorder(Education, Education, FUN = length), fill = Education)) +
+  geom_bar() +
+  coord_flip() +
+  theme_minimal() +
+  labs(title = "Number of Employees by Education Level",
+       x = "Education",
+       y = "Count") +
+  theme(legend.position = "none")
+
+# Perform statistical test
+# ANOVA test to check if differences are significant
+anova_result <- aov(Salary ~ Education, data = data)
+print(summary(anova_result))
 ```

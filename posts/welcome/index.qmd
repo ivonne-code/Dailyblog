@@ -1,0 +1,12 @@
+---
+title: "Welcome To My Blog"
+author: "Yifeng Luo"
+date: "2024-12-07"
+categories: [news]
+---
+
+This is the first post in a Quarto blog. Welcome!
+
+![](IMG_7430.jpg)
+
+This is a picture of me when I am in my hometown.

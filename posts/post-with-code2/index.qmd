@@ -137,3 +137,5 @@ Based on the visualizations and statistical results, here's a comprehensive anal
 -   These correlations are practically negligible
 
 Overall Conclusion: Based on this analysis, attendance status does not appear to have a meaningful effect on student stress levels. The stress distributions are remarkably similar across all attendance categories, and the statistical tests confirm that any observed differences are not significant. This suggests that other factors may be more important in determining student stress levels than attendance patterns.
+
+Data Reference from:[link text](https://www.kaggle.com/datasets/ziya07/student-health-and-attendance-data)

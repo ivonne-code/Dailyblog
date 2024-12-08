@@ -3,7 +3,7 @@ title: "Do eduation effect their salary in IT area?"
 author: "Yifeng Luo"
 date: "2024-12-07"
 categories: [news, code, analysis]
-image: "IT.jpg"
+image: "IT.jpeg"
 ---
 
 This is a post with executable code.
@@ -126,3 +126,5 @@ Key Findings:
 -   Professional degrees (MTech, B.PHARMACY) show higher minimum salaries
 
 Conclusions: 1. While higher technical degrees tend to command higher salaries, the relationship isn't statistically significant 2. There's considerable overlap in salary ranges across different education levels 3. Technical and professional degrees show more salary stability 4. Education alone isn't the sole determinant of IT salaries in India
+
+Data Reference from:[link text](https://www.kaggle.com/datasets/ashutosh598/position-salary-dataset/data)

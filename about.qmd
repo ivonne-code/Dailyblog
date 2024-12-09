@@ -1,5 +1,5 @@
 ---
-title: "About"
+title: "About Me"
 image: profile.jpg
 about:
   template: jolla
@@ -9,11 +9,20 @@ about:
       href: https://twitter.com
     - icon: linkedin
       text: LinkedIn
-      href: https://linkedin.com
+      href: https://www.linkedin.com/in/yifeng-luo-964038296/
     - icon: github
       text: Github
-      href: https://github.com
-
+      href: https://github.com/ivonne-code
 ---
 
-About this blog
+Let me tell you about myself, including my hobbies, name, interests, and achievements.
+
+My name is Yifeng Luo, but you can call me Ivonne, which is easier to pronounce.
+
+I enjoy boxing, playing badminton, playing games, and watching TV.
+
+My personal interests include baking and recording interesting videos.
+
+My career interests are diverse, but I'm especially interested in data science and human-computer interaction.
+
+My achievements include one period of mathematical research related to data analysis, two internships (at CITIC Securities and the Institute of Securities and Futures), development of an Expected Goals (xG) prediction model using machine learning, Course Assistant experience in the Computer Science department, Secretary role in the Codecat Programming Club, fourth prize in the China Southwestern Chess Competition, and third prize in the Sichuan Province Latin dance competition. I am pursuing a BS in Mathematics with minors in Information Science and Computer Science at UIUC.
